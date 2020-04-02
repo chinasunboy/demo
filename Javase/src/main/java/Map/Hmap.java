@@ -2,6 +2,7 @@ package Map;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Hmap {
     public static void main(String[] args) {
@@ -19,5 +20,10 @@ public class Hmap {
             }
         }
         System.out.println(hashMap);
+        Set<Character> characters = hashMap.keySet();
+        for (Character c :characters){
+            System.out.print(c+" ");
+            System.out.println(hashMap.get(c));
+        }
     }
 }
