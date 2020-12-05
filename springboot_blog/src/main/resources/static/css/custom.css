@@ -1,0 +1,110 @@
+.ui.vertical.basic.segment.masthead{
+    height: 1000px;
+    background: url("../images/sky.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    padding-right: 40px;
+    /*position: relative;*/
+}
+
+.ui.center.inverted.aligned.header.slogan{
+    font-size: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ui.orange.circular.button{
+    width: 200px;
+}
+.ui.image.s111{
+    padding-left: 100px;
+}
+
+.ui.inverted.segment.card-view{
+    height: 300px;
+}
+
+.ui.vertical.basic.segment.recommended.s112 > .ui.center.aligned.header{
+    font-size: 40px;
+    color: red;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.ui.header.title{
+    margin-top: 5px;
+    margin-bottom: 170px;
+}
+
+.ui.vertical.basic.segment.recommended.s112{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+}
+
+.s113 {
+    margin-top: 22px;
+}
+
+.ui.inverted.segment.renwu{
+    height: 200px;
+    width: 200px;
+    background: url("../images/20.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -50px 0px;     /*可以调整背景图片位置(左 上)*/
+}
+
+.ui.center.aligned.header.s114{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.ui.four.column.grid.s115{
+    margin-left: 16%;
+    margin-right: 10%;
+    margin-bottom: 105px;
+}
+
+.ui.vertical.segment.s116{
+    background: url('../images/14.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10% 15%;
+    margin-bottom: 150px;
+    position: relative;
+}
+
+.ui.vertical.segment.s116 > .ui.labeled.button{
+    font-size: 17px;
+    height: 40px;
+    width: 170px;
+    top: 100%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: pink;
+}
+
+.ui.inverted.segment.renwu > .unhide.icon{
+    top: 90%;
+    left: 80%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.ui.inverted.segment.renwu > .ui.inverted.header{
+    top:105%;
+    left: 45%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+.big.inverted.red.circular.star.icon{
+    top: 85%;
+    left: 85%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
