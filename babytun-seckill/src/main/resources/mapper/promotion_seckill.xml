@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.babytunseckill.dao.PromotionSecKillDAO">
+    <!-- 查找是否存在秒杀活动 -->
+    <select id="findById" parameterType="long" resultType="demo.babytunseckill.entity.PromotionSecKill">
+      select * from t_promotion_seckill where ps_id = #{value}
+    </select>
+    <!-- 查找正在进行秒杀活动的所有商品星系 -->
+    <select id="findUnstartSecKill" resultType="demo.babytunseckill.entity.PromotionSecKill">
+        select * from t_promotion_seckill where now() BETWEEN start_time AND end_time and status = 0 ;
+    </select>
+    <!-- 查找现在时间大于结束时间且状态为1的商品 -->
+    <select id="findExpireSecKill" resultType="demo.babytunseckill.entity.PromotionSecKill">
+        select * from t_promotion_seckill where now() > end_time and status = 1
+    </select>
+
+    <update id="update" parameterType="demo.babytunseckill.entity.PromotionSecKill">
+        UPDATE t_promotion_seckill SET goods_id = #{goodsId}, ps_count = #{psCount},
+            start_time = #{startTime}, end_time = #{endTime},
+            status=#{status} , current_price = #{currentPrice}  WHERE ps_id = #{psId}
+    </update>
+</mapper>
