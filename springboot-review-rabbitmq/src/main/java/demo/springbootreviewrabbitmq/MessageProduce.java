@@ -1,5 +1,6 @@
 package demo.springbootreviewrabbitmq;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import demo.springbootreviewrabbitmq.Employee;
 import org.springframework.amqp.core.Message;
@@ -61,14 +62,14 @@ public class MessageProduce {
     };
 
 
-    public void sendMessage(String str){
+    public void sendMessage(Employee employee){
         //作用为作为消息的附加传递信息 ，生成全局唯一变量，规则为时间戳
-        //CorrelationData correlationData = new CorrelationData(employee.getEmpno()+"-"+ new Date().getTime());
+        CorrelationData correlationData = new CorrelationData(employee.getEmpno()+"-"+ new Date().getTime());
         //将上面重新的对象放进来
 
         rabbitTemplate.setConfirmCallback(confirmCallback);
         rabbitTemplate.setReturnCallback(returnCallback);
         //                                             交换机                          路由键             对象      附加信息
-        rabbitTemplate.convertAndSend("springBoot-review-exchange","springboot-queue", str );
+        rabbitTemplate.convertAndSend("springBoot-review-exchange","springboot-queue", JSON.toJSONString(employee),correlationData );
     }
 }
