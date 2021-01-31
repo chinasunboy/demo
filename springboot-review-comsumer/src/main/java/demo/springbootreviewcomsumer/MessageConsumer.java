@@ -1,5 +1,7 @@
 package demo.springbootreviewcomsumer;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.amqp.support.AmqpHeaders;
@@ -25,14 +27,15 @@ public class MessageConsumer {
     @RabbitHandler //通知SpringBoot下面的方法用于接收消息。
     // 这个方法运行后将处于等待的状态，有新的消息进来就会自动触发下面的方法处理消息
     //@Payload 代表运行时将消息反序列化后注入到后面的参数中
-    public void handleMessage(@Payload String employee , Channel channel ,
+    public void handleMessage(@Payload String object , Channel channel ,
                               @Headers Map<String,Object> headers) {
         System.out.println("=========================================");
-        System.out.println(employee);
-        //System.out.println("接收到" + employee.getEmpno() + ":" + employee.getName());
+        Employee employee = JSON.parseObject(object, Employee.class);
+        System.out.println("接收到" + employee.getEmpno() + ":" + employee.getName());
         //所有消息处理后必须进行消息的ack，channel.basicAck()
         Long tag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
         try {
+            //第二个参数为不批量处理
             channel.basicAck(tag , false);
         } catch (IOException e) {
             e.printStackTrace();
